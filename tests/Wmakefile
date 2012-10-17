@@ -5,7 +5,7 @@
 #
 #      Pthreads-win32 - POSIX Threads Library for Win32
 #      Copyright(C) 1998 John E. Bossom
-#      Copyright(C) 1999,2005 Pthreads-win32 contributors
+#      Copyright(C) 1999,2012 Pthreads-win32 contributors
 # 
 #      Contact Email: rpj@callisto.canberra.edu.au
 # 
@@ -62,7 +62,7 @@ WCDLL	= pthreadWC$(DLL_VER).dll
 # C++ Exceptions in application - using WC version of pthreads dll
 WCXFLAGS	= -xs -d__CLEANUP_C
 
-CFLAGS= -w4 -e25 -d_WIN32_WINNT=0x400 -d_REENTRANT -zq -bm $(OPTIM) -5r -bt=nt -mf -d2
+CFLAGS= -w4 -e25 -d_REENTRANT -zq -bm $(OPTIM) -5r -bt=nt -mf -d2
 
 LFLAGS= 
 INCLUDES= -i=.
@@ -79,7 +79,7 @@ EHFLAGS	=
 # If a test case returns a non-zero exit code to the shell, make will
 # stop.
 
-PASSES	= sizes.pass  loadfree.pass &
+PASSES	= sizes.pass  &
 	  self1.pass  mutex5.pass  &
 	  mutex1.pass  mutex1n.pass  mutex1e.pass  mutex1r.pass &
 	  semaphore1.pass  semaphore2.pass semaphore3.pass &
@@ -116,7 +116,9 @@ PASSES	= sizes.pass  loadfree.pass &
 	  spin1.pass  spin2.pass  spin3.pass  spin4.pass  &
 	  barrier1.pass  barrier2.pass  barrier3.pass  barrier4.pass  barrier5.pass  &
 	  exception1.pass  exception2.pass  exception3_0.pass  exception3.pass  &
-	  cancel9.pass  stress1.pass
+	  cancel9.pass  &
+	  affinity1.pass  affinity2.pass  affinity3.pass  affinity4.pass  affinity5.pass  &
+	  stress1.pass
 
 BENCHRESULTS = &
 	  benchtest1.bench benchtest2.bench benchtest3.bench benchtest4.bench benchtest5.bench
@@ -224,7 +226,13 @@ benchtest2.bench:
 benchtest3.bench:
 benchtest4.bench:
 benchtest5.bench:
-barrier1.pass:
+
+affinity1.pass:
+affinity2.pass: affinity1.pass
+affinity3.pass: affinity2.pass
+affinity4.pass: affinity3.pass
+affinity5.pass: affinity4.pass
+barrier1.pass: semaphore4.pass
 barrier2.pass: barrier1.pass
 barrier3.pass: barrier2.pass
 barrier4.pass: barrier3.pass
@@ -283,7 +291,6 @@ join2.pass: create1.pass
 join3.pass: join2.pass
 join4.pass: join3.pass
 kill1.pass: 
-loadfree.pass: pthread.dll
 mutex1.pass: self1.pass
 mutex1n.pass: mutex1.pass
 mutex1e.pass: mutex1.pass

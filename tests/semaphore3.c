@@ -6,10 +6,11 @@
  *
  *      Pthreads-win32 - POSIX Threads Library for Win32
  *      Copyright(C) 1998 John E. Bossom
- *      Copyright(C) 1999,2005 Pthreads-win32 contributors
- * 
- *      Contact Email: rpj@callisto.canberra.edu.au
- * 
+ *      Copyright(C) 1999,2012 Pthreads-win32 contributors
+ *
+ *      Homepage1: http://sourceware.org/pthreads-win32/
+ *      Homepage2: http://sourceforge.net/projects/pthreads4w/
+ *
  *      The current list of contributors is contained
  *      in the file CONTRIBUTORS included with the source
  *      code distribution. The list can also be seen at the
@@ -80,8 +81,8 @@ sem_t s;
 void *
 thr (void * arg)
 {
-  assert(sem_wait(&s) == 0);
   assert(pthread_detach(pthread_self()) == 0);
+  assert(sem_wait(&s) == 0);
   return NULL;
 }
 
@@ -106,7 +107,7 @@ main()
           assert(sem_getvalue(&s, &value) == 0);
         }
       while (value != -i);
-      //printf("Value = %d\n", value); fflush(stdout);
+      //printf("1:Value = %d\n", value); fflush(stdout);
       assert(-value == i);
     }
 
@@ -114,7 +115,7 @@ main()
     {
       assert(sem_post(&s) == 0);
       assert(sem_getvalue(&s, &value) == 0);
-      //printf("Value = %d\n", value);	fflush(stdout);
+      //printf("2:Value = %d\n", value);	fflush(stdout);
       assert(-value == i);
     }
 

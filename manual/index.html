@@ -5,9 +5,7 @@
 	<TITLE></TITLE>
 	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.4  (Win32)">
 	<META NAME="CREATED" CONTENT="20050504;17350500">
-	<META NAME="CHANGED" CONTENT="20120819;13095706">
-	<META NAME="CHANGEDBY" CONTENT="Ross Johnson">
-	<META NAME="CHANGEDBY" CONTENT="Ross Johnson">
+	<META NAME="CHANGED" CONTENT="20121004;13410656">
 	<STYLE TYPE="text/css">
 	<!--
 		H4.cjk { font-family: "AR PL UMing CN" }
@@ -29,6 +27,7 @@ POSIX thread safe routines provided by Pthreads-w32</A><BR><A HREF="#sect3" NAME
 Pthreads-w32 routines</A><BR><A HREF="#sect4" NAME="toc4">Other</A></P>
 <H2 CLASS="western"><A HREF="#toc1" NAME="sect1">POSIX threads API
 reference</A></H2>
+<P STYLE="margin-left: 2.01cm"><A HREF="cpu_set.html"><B>cpu_set</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_attr_init.html"><B>pthread_attr_destroy</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_attr_init.html"><B>pthread_attr_getdetachstate</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_attr_init.html"><B>pthread_attr_getinheritsched</B></A></P>
@@ -75,6 +74,7 @@ reference</A></H2>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_key_create.html"><B>pthread_getspecific</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_join.html"><B>pthread_join</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_join.html"><B>pthread_timedjoin_np</B></A></P>
+<P STYLE="margin-left: 2.01cm"><A HREF="pthread_join.html"><B>pthread_tryjoin_np</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_key_create.html"><B>pthread_key_create</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_key_create.html"><B>pthread_key_delete</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_kill.html"><B>pthread_kill</B></A></P>
@@ -124,7 +124,9 @@ reference</A></H2>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_cancel.html"><B>pthread_testcancel</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="sched_get_priority_max.html"><B>sched_get_priority_max</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="sched_get_priority_max.html"><B>sched_get_priority_min</B></A></P>
+<P STYLE="margin-left: 2.01cm"><A HREF="sched_setaffinity.html"><B>sched_getaffinity</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="sched_getscheduler.html"><B>sched_getscheduler</B></A></P>
+<P STYLE="margin-left: 2.01cm"><A HREF="sched_setaffinity.html"><B>sched_setaffinity</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="sched_setscheduler.html"><B>sched_setscheduler</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="sched_yield.html"><B>sched_yield</B></A></P>
 <P STYLE="margin-left: 2.01cm"><B>sem_close</B></P>
@@ -148,6 +150,7 @@ Pthreads-w32 routines</A></H2>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_num_processors_np.html"><B>pthread_num_processors_np</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_win32_test_features_np.html"><B>pthread_win32_test_features_np</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_timechange_handler_np.html"><B>pthread_timechange_handler_np</B></A></P>
+<P STYLE="margin-left: 2.01cm"><A HREF="pthread_join.html"><B>pthread_timedjoin_np</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_win32_attach_detach_np.html"><B>pthread_win32_process_attach_np</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_win32_attach_detach_np.html"><B>pthread_win32_process_detach_np</B></A></P>
 <P STYLE="margin-left: 2.01cm"><A HREF="pthread_win32_attach_detach_np.html"><B>pthread_win32_thread_attach_np</B></A></P>

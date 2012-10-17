@@ -6,9 +6,10 @@
  *
  *      Pthreads-win32 - POSIX Threads Library for Win32
  *      Copyright(C) 1998 John E. Bossom
- *      Copyright(C) 1999,2005 Pthreads-win32 contributors
+ *      Copyright(C) 1999,2012 Pthreads-win32 contributors
  *
- *      Contact Email: rpj@callisto.canberra.edu.au
+ *      Homepage1: http://sourceware.org/pthreads-win32/
+ *      Homepage2: http://sourceforge.net/projects/pthreads4w/
  *
  *      The current list of contributors is contained
  *      in the file CONTRIBUTORS included with the source
@@ -73,7 +74,13 @@
 
 #include "test.h"
 
-#if defined(__cplusplus)
+/*
+ * Note: Due to a buggy C++ runtime in Visual Studio 2005, when we are
+ * built with /MD and an unhandled exception occurs, the runtime does not
+ * properly call the terminate handler specified by set_terminate().
+ */
+#if defined(__cplusplus) \
+	&& !(defined(_MSC_VER) && _MSC_VER == 1400 && defined(_DLL) && !defined(_DEBUG))
 
 #if defined(_MSC_VER)
 # include <eh.h>

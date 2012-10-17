@@ -6,10 +6,11 @@
  *
  *      Pthreads-win32 - POSIX Threads Library for Win32
  *      Copyright(C) 1998 John E. Bossom
- *      Copyright(C) 1999,2005 Pthreads-win32 contributors
- * 
- *      Contact Email: rpj@callisto.canberra.edu.au
- * 
+ *      Copyright(C) 1999,2012 Pthreads-win32 contributors
+ *
+ *      Homepage1: http://sourceware.org/pthreads-win32/
+ *      Homepage2: http://sourceforge.net/projects/pthreads4w/
+ *
  *      The current list of contributors is contained
  *      in the file CONTRIBUTORS included with the source
  *      code distribution. The list can also be seen at the
@@ -139,7 +140,13 @@ main()
 {
   pthread_t t[NUM_THREADS][NUM_ONCE];
   int i, j;
-  
+
+#if defined(PTW32_CONFIG_MSVC6) && defined(__CLEANUP_CXX)
+  puts("If this test fails or hangs, rebuild the library with /EHa instead of /EHs.");
+  puts("(This is a known issue with Microsoft VC++6.0.)");
+  fflush(stdout);
+#endif
+
   memset(&numOnce, 0, sizeof(sharedInt_t));
   memset(&numThreads, 0, sizeof(sharedInt_t));
 
