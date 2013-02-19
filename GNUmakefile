@@ -68,6 +68,7 @@ CC      = $(CROSS)gcc
 CXX     = $(CROSS)g++
 RANLIB  = $(CROSS)ranlib
 RC		= $(CROSS)windres
+OD_PRIVATE	= $(CROSS)objdump -p
 
 # Build for non-native architecture. E.g. "-m64" "-m32" etc.
 # Not fully tested fully, needs gcc built with "--enable-multilib"
@@ -77,12 +78,13 @@ RC		= $(CROSS)windres
 # a value.
 #ARCH	= 
 
-ifeq ($(ARCH),-m32)
-RES_TARGET	= --target pe-i386
-endif
-ifeq ($(ARCH),-m64)
-RES_TARGET	= --target pe-x86-64
-endif
+#
+# Look for targets that $(RC) (usually windres) supports then look at any object
+# file just built to see which target the compiler used and set the $(RC) target
+# to match it.
+#
+SUPPORTED_TARGETS	= $(filter pe-% pei-% elf32-% elf64-% srec symbolsrec verilog tekhex binary ihex,$(shell $(RC) --help))
+RC_TARGET			= --target $(firstword $(filter $(SUPPORTED_TARGETS),$(shell $(OD_PRIVATE) *.$(OBJEXT))))
 
 OPT		=  $(CLEANUP) -O3 # -finline-functions -findirect-inlining
 XOPT	= 
@@ -274,7 +276,7 @@ install:
 	$(CC) -c $(CFLAGS) -DPTW32_BUILD_INLINED -Wa,-ahl $^ > $@
 
 %.o: %.rc
-	$(RC) $(RES_TARGET) $(RCFLAGS) $(CLEANUP) -o $@ -i $<
+	$(RC) $(RC_TARGET) $(RCFLAGS) $(CLEANUP) -o $@ -i $<
 
 .SUFFIXES: .dll .rc .c .o
 
