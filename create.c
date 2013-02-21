@@ -146,7 +146,9 @@ pthread_create (pthread_t * tid,
 #if defined(HAVE_SIGSET_T)
   tp->sigmask = sp->sigmask;
 #endif
+#if ! defined(WINCE)
   tp->cpuset = sp->cpuset;
+#endif
 
   if (a != NULL)
     {
@@ -224,7 +226,11 @@ pthread_create (pthread_t * tid,
           (void) ptw32_setthreadpriority (thread, SCHED_OTHER, priority);
         }
 
+#if ! defined(WINCE)
+
       SetThreadAffinityMask(tp->threadH, tp->cpuset);
+
+#endif
 
       if (run)
         {
@@ -272,7 +278,12 @@ pthread_create (pthread_t * tid,
             (void) ptw32_setthreadpriority (thread, SCHED_OTHER, priority);
           }
 
+#if ! defined(WINCE)
+
         SetThreadAffinityMask(tp->threadH, tp->cpuset);
+
+#endif
+
       }
 
     ptw32_mcs_lock_release (&stateLock);
