@@ -1,3 +1,34 @@
+2013-06-19  Ross Johnson <ross dot johnson at homemail dot com dot au>
+
+	* pthread_attr_init.c: Initialise thread name element.
+	* create.c: Initialise thread name from attributes.
+
+2013-06-13  Ross Johnson <ross dot johnson at homemail dot com dot au>
+
+	* pthread_setname_np.c: Initial version.
+	* pthread_getname_np.c: Initial version.
+	* pthread_attr_setname_np.c: Initial version.
+	* pthread_attr_getname_np.c: Initial version.
+	* pthread.h: Add new prototypes.
+	* implement.h (pthread_attr_t_): Add "thrname" element.
+	* (ptw32_thread_t): Add "name" element.
+
+2013-06-06  Ross Johnson <ross dot johnson at homemail dot com dot au>
+
+	* pthread.h (_POSIX_THREAD_ATTR_STACKADDR): Now set to -1. The API
+	prototypes are defined but return ENOSYS; previously the addr value was
+	stored in the attribute struct and retreivable but unused.
+	* pthread_attr_setstackaddr.c: Should return ENOSYS rather than silently
+	ignore the setting.
+	* pthread_attr_getstackaddr.c: Likewise.
+	* pthread_attr_getaffinity_np.c: Initial version.
+	* pthread_attr_setaffinity_np.c: Initial version.
+
+2013-05-01  Andrew Chernow <achernow at gmail dot com>
+
+	* dll.c: Add invocation of thread detach logic for static linked
+	applications for MSVC8.0 or later builds.
+
 2012-12-19  Jason Baker <jason underscore baker at symantec dot com>
 
 	* pthread_win32_attach_detach_np.c (pthread_win32_process_attach_np):

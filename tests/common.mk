@@ -3,7 +3,7 @@
 #
 
 ALL_KNOWN_TESTS = \
-	affinity1 affinity2 affinity3 affinity4 affinity5 \
+	affinity1 affinity2 affinity3 affinity4 affinity5 affinity6 \
 	barrier1 barrier2 barrier3 barrier4 barrier5 barrier6 \
 	cancel1 cancel2 cancel3 cancel4 cancel5 cancel6a cancel6d \
 	cancel7 cancel8 cancel9 \
@@ -20,7 +20,7 @@ ALL_KNOWN_TESTS = \
 	equal1 \
 	errno1 \
 	exception1 exception2 exception3_0 exception3 \
-	exit1 exit2 exit3 exit4 exit5 \
+	exit1 exit2 exit3 exit4 exit5 exit6 \
 	eyal1 \
 	join0 join1 join2 join3 join4 \
 	kill1 \
@@ -30,6 +30,7 @@ ALL_KNOWN_TESTS = \
 	mutex6s mutex6es mutex6rs \
 	mutex7 mutex7n mutex7e mutex7r \
 	mutex8 mutex8n mutex8e mutex8r \
+	name_np1 name_np2 \
 	once1 once2 once3 once4 \
 	priority1 priority2 inherit1 \
 	reuse1 reuse2 \
@@ -51,3 +52,7 @@ TESTS = $(ALL_KNOWN_TESTS)
 
 BENCHTESTS = \
 	benchtest1 benchtest2 benchtest3 benchtest4 benchtest5
+
+# Output useful info if no target given. I.e. the first target that "make" sees is used in this case.
+default_target: help
+	

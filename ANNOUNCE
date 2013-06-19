@@ -267,14 +267,21 @@ The following functions are implemented:
                               for thread validity checking)
 
       ---------------------------
-      Non-portable routines (see the README.NONPORTABLE file for usage)
+      Non-portable routines
       ---------------------------
+      (See the README.NONPORTABLE file or HTML manual pages for usage.)
+      pthread_attr_getname_np
+      pthread_attr_setname_np
+      pthread_getname_np
+      pthread_setname_np
       pthread_timedjoin_np
       pthread_tryjoin_np
       pthread_getw32threadhandle_np
       pthread_timechange_handler_np
       pthread_delay_np
       pthread_getunique_np
+      pthread_attr_getaffinity_np
+      pthread_attr_setaffinity_np
       pthread_getaffinity_np
       pthread_setaffinity_np
       pthread_mutexattr_getkind_np

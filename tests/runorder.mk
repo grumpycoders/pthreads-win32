@@ -10,8 +10,9 @@ benchtest5.bench:
 affinity1.pass: 
 affinity2.pass: affinity1.pass
 affinity3.pass: affinity2.pass self1.pass create3.pass
-affinity4.pass: affinity3.pass self1.pass create3.pass
-affinity5.pass: affinity4.pass self1.pass create3.pass
+affinity4.pass: affinity3.pass
+affinity5.pass: affinity4.pass
+affinity6.pass: affinity5.pass
 barrier1.pass: semaphore4.pass
 barrier2.pass: barrier1.pass semaphore4.pass
 barrier3.pass: barrier2.pass semaphore4.pass self1.pass create3.pass join4.pass
@@ -66,6 +67,7 @@ exit2.pass: create1.pass
 exit3.pass: create1.pass
 exit4.pass: self1.pass create3.pass 
 exit5.pass: exit4.pass kill1.pass
+exit6.pass: exit5.pass
 eyal1.pass: self1.pass create3.pass mutex8.pass tsd1.pass
 inherit1.pass: join1.pass priority1.pass
 join0.pass: create1.pass
@@ -101,6 +103,8 @@ mutex8.pass: mutex7.pass
 mutex8n.pass: mutex7n.pass
 mutex8e.pass: mutex7e.pass
 mutex8r.pass: mutex7r.pass
+name_np1.pass: join4.pass barrier6.pass
+name_np2.pass: name_np1.pass
 once1.pass: create1.pass
 once2.pass: once1.pass
 once3.pass: once2.pass
